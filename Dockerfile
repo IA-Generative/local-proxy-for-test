@@ -3,6 +3,8 @@ FROM debian:bookworm-slim
 
 RUN apt-get update \
     && apt-get install -y --no-install-recommends tinyproxy ca-certificates \
+    && mkdir -p /var/log/tinyproxy \
+    && chown -R tinyproxy:tinyproxy /var/log/tinyproxy \
     && rm -rf /var/lib/apt/lists/*
 
 # Replace default config with our strict config
